@@ -1,0 +1,334 @@
+/* WELCOME SECTION */
+
+.welcome-section {
+    position: relative;
+    background-color: var(--dark);
+    padding: 0;
+}
+
+.welcome-container {
+    display: flex;
+    position: relative;
+}
+
+.welcome-content {
+    position: relative;
+    flex: 0 0;
+    flex-basis: 600px;
+    align-self: center;
+    margin-bottom: 122px;
+    z-index: 3;
+    opacity: 1;
+    transition-duration: var(--duration-long);
+    pointer-events: none;
+}
+
+.welcome-title {
+    margin-bottom: 26px;
+    line-height: 90px;
+}
+
+.welcome-subtitle {
+    margin-bottom: 76px;
+    font-size: var(--font3);
+    line-height: 33px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.welcome-btn {
+    display: block;
+    width: 360px;
+    font-size: var(--font4);
+    line-height: 74px;
+    letter-spacing: 2px;
+    text-align: center;
+    background-color: var(--dark-red);
+    border-radius: 10px;
+    pointer-events: auto;
+}
+
+.welcome-btn:hover {
+    background-color: var(--gold);
+    transition-duration: var(--duration-long);
+}
+
+
+
+
+/* slider */
+
+.welcome-slider {
+    position: relative;
+    margin-right: 0;
+    width: 1000px;
+    height: 100%;
+    margin-left: -160px;
+    margin-right: 0;
+}
+
+.welcome-slider .swiper-slide {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    position: relative;
+    transition-property: transform;
+    font-size: 0;
+}
+
+.welcome-slider .swiper-wrapper {
+    margin-bottom: 60px;
+}
+
+.slide-image {
+    text-align: center;
+}
+
+.slide-image img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.welcome-slider-controls {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 58px;
+    width: 600px;
+    height: 120px;
+    padding-right: 75px;
+    background-color: var(--dark);
+}
+
+.welcome-counter {
+    display: flex;
+    gap: 10px;
+    user-select: none;
+    color: var(--light);
+    font-family: var(--roboto);
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: 400;
+}
+
+.welcome-dots.swiper-pagination-bullets.swiper-pagination-horizontal {
+    display: flex;
+    gap: 25px;
+    width: 180px;
+}
+
+.welcome-dots.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    background: var(--light);
+    cursor: pointer;
+    opacity: 1;
+    border-radius: 0;
+}
+
+.welcome-dots.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet-active {
+    background: var(--gold-light);
+}
+
+.welcome-dots.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet:hover {
+    background: var(--gold);
+    transition-duration: var(--duration-short);
+}
+
+.welcome-arrows {
+    display: flex;
+    gap: 20px;
+}
+
+.welcome-prev, 
+.welcome-next {
+    fill: var(--light);
+    cursor: pointer;
+    user-select: none;
+    width: 30px;
+    height: 12px;
+}
+
+.welcome-prev {
+    background: url("../assets/svg/welcome-slider-arrow-prev.svg") center /  contain no-repeat;
+}
+
+.welcome-next {
+    background: url("../assets/svg/welcome-slider-arrow-next.svg") center /  contain no-repeat;
+}
+
+.welcome-arrows > button:hover {
+    filter: invert(49%) sepia(49%) saturate(249%) hue-rotate(356deg) brightness(99%) contrast(87%);
+    transition-duration: var(--duration-short);
+}
+
+.welcome-slider::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    pointer-events: none;
+    z-index: 3;
+}
+
+@media (max-width: 1280px) {
+    .welcome-title {
+        font-size: 60px;
+    }
+
+    .welcome-subtitle {
+        margin-bottom: 48px;
+    }
+
+    .opacity {
+        opacity: 0;
+    }
+
+    .welcome-content {
+        flex-basis: 480px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .welcome-title {
+        margin-bottom: 23px;
+        font-size: 50px;
+    }
+    
+    .welcome-content {
+        flex-basis: 445px;
+        margin-bottom: 143px;
+    }
+
+    .welcome-btn {
+        width: 300px;
+        line-height: 60px;
+    }
+
+    .welcome-slider-controls {
+        gap: 45px;
+        width: 100%;
+    }
+
+    .welcome-dots.swiper-pagination-bullets.swiper-pagination-horizontal {
+        width: 160px;
+    }
+
+    .welcome-dots.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (max-width: 980px) {
+    .welcome-container {
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .welcome-content {
+        flex-basis: 100%;
+        margin-bottom: 0;
+    }
+
+    .welcome-slider-overlay {
+        display: none;
+    }
+    
+    .welcome-title {
+        font-size: var(--font1);
+        line-height: 60px;
+    }
+
+    .welcome-subtitle {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .welcome-btn {
+        display: none;
+    }
+
+    .welcome-slider {
+        width: 100%;
+        margin-left: 0;
+        padding-bottom: 0;
+    }
+
+    .welcome-slider .swiper-wrapper {
+        margin-bottom: 100px;
+    }
+
+    .welcome-slider::before {
+        display: none;
+    }
+
+    .welcome-slider-controls {
+        height: 100px;
+        justify-content: center;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 420px) {
+
+}
+
+@media (max-width: 420px) {
+    .welcome-title {
+        margin-bottom: 25px;
+        padding-top: 6px;
+        font-size: 28px;
+        line-height: 40px;
+    }
+
+    .welcome-subtitle {
+        margin-bottom: 51px;
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    .welcome-slider-controls {
+        height: 80px;
+        gap: 25px;
+    }
+
+    .welcome-slider .swiper-wrapper {
+        margin-bottom: 80px;
+    }
+
+    .welcome-dots.swiper-pagination-bullets.swiper-pagination-horizontal {
+        width: 75px;
+        gap: 10px;
+    }
+
+    .welcome-dots.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+        width: 7px;
+        height: 7px;
+    }
+
+    .welcome-counter {
+        font-size: 16px;
+        line-height: 16px;
+        gap: 5px;
+    }
+
+    .welcome-arrows {
+        gap: 15px;
+    }
+
+    .welcome-prev, 
+    .welcome-next {
+        width: 20px;
+        height: 8px;
+    }
+}

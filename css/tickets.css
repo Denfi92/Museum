@@ -1,0 +1,1201 @@
+/* TICKETS SECTION */
+
+.tickets-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tickets-img {
+    width: 50%;
+    height: 550px;
+    max-width: 720px;
+    display: block;
+    background: no-repeat url("../assets/img/tickets.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.tickets-buy-container {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 50%;
+    padding-left: 60px;
+    color: var(--dark);
+}
+
+.ticket-type-title, .ticket-amount-title {
+    margin-bottom: 50px;
+    font-size: var(--font3);
+    line-height: 33px;
+    font-weight: 700;
+}
+
+.ticket-type-container {
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-type-item {
+    position: relative;
+    display: block;
+    margin-bottom: 26px;
+    padding-left: 40px;
+    font-size: var(--font4);
+    line-height: 26px;
+    font-weight: 300;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ticket-type-item input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 17px;
+    height: 17px;
+    border: 2px solid var(--dark);
+    border-radius: 50%;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.ticket-type-item:hover {
+    color: var(--gold);
+    transition-duration: var(--duration-short);
+}
+
+.ticket-type-item input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.ticket-type-item .checkmark:after {
+    top: 3px;
+    left: 3px;
+    width: 7px;
+    height: 7px;
+    background: var(--dark);
+    border-radius: 50%;
+}
+
+.ticket-amount-container {
+    width: 175px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.ticket-amount-title {
+    margin-bottom: 26px;
+}
+
+.tickets-age-category {
+    margin-bottom: 13px;
+    line-height: 26px;
+    font-weight: 300;
+}
+
+.ticket-amount-counter {
+    margin-bottom: 13px;
+}
+
+.ticket-amount-counter input::-webkit-outer-spin-button,
+.ticket-amount-counter input::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+.ticket-amount-counter input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    width: 150px;
+    height: 50px;
+    border: 3px solid var(--dark);
+}
+
+.number {
+    all: unset;
+    width: 30px;
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.btn-change-amount {
+    font-size: var(--font2);
+    line-height: 38px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.btn-change-amount:hover, .btn-change-amount:focus {
+    color: var(--gold);
+    transition-duration: var(--duration-short);
+}
+
+.ticket-total {
+    margin-top: 36px;
+    margin-bottom: 60px;
+    font-size: var(--font3);
+    line-height: 33px;
+    font-weight: 700;
+    letter-spacing: 1.65px;
+}
+
+.ticket-buy-btn {
+    width: 175px;
+    height: 50px;
+    line-height: 27px;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 2px;
+    color: var(--light);
+    background-color: var(--dark);
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.ticket-buy-btn:hover {
+    background-color: var(--gold);
+    transition-duration: var(--duration-short);
+}
+
+.buy-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 12;
+}
+
+.buy-container-form {
+    position: relative;
+    left: -100%;
+    z-index: 11;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    max-height: 845px;
+    padding: 91px 235px;
+    font-size: var(--font5);
+    font-weight: 400;
+    color: var(--dark);
+    background-color: var(--light);
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+    transition: left 1s;
+}
+
+.buy-container-form-shown {
+    left: 0px;
+}
+
+.buy-container-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.buy-close-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 25px;
+    height: 25px;
+    background: no-repeat url("../assets/svg/pay/close.svg");
+    cursor: pointer;
+}
+
+input {
+    margin: 0;
+    padding: 0;
+}
+
+.buy-tickets-form {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 400px;
+}
+
+.book-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.buy-tickets-title {
+    margin-bottom: 12px;
+    font-family: var(--forum);
+    font-size: 50px;
+    line-height: 55px;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.buy-logo {
+    width: 85px;
+    height: 41px;
+    background-image: url('../assets/svg/pay/logo-gold.svg')
+}
+
+.book-head {
+    margin-bottom: 60px;
+    border-bottom: 3px solid var(--dark-red);
+}
+
+.book-head p {
+    margin-bottom: 9px;
+    color: var(--dark-red);
+}
+
+.book-input {
+    height: 45px;
+    color: var(--dark);
+    border: 1px solid var(--dark);
+}
+
+.book-input::placeholder {
+    color: var(--dark);
+}
+
+.book-amount-container {
+    display: flex;
+    flex-direction: column;
+    padding: 9px 15px 11px;
+    border: 1px solid var(--dark);
+}
+
+.book-amount-title {
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid var(--dark-red);
+    font-family: var(--forum);
+    line-height: 20px;
+    color: var(--gold);
+}
+
+.book-amount-type-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-amount-type-container p {
+    line-height: 28px;
+}
+
+.book-amount-type-container:nth-child(2) {
+    margin-bottom: 13px;
+}
+
+.book-counter {
+    display: flex;
+    justify-content: space-between;
+    width: 105px;
+    height: 25px;
+}
+
+.book-number {
+    width: 35px;
+    text-align: center;
+    border: 1px solid var(--dark);
+}
+
+.book-amount-container input::-webkit-outer-spin-button,
+.book-amount-container input::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+.book-amount-container input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.book-btn-change-amount {
+    width: 35px;
+    height: 25px;
+    padding-top: 1px;
+    text-align: center;
+    font-weight: 400;
+    color: var(--light);
+    background-color: var(--dark);
+    cursor: pointer;
+    user-select: none;
+}
+
+.book-btn-change-amount:hover {
+    background-color: var(--dark-red);
+    transition-duration: var(--duration-short);
+}
+
+.pay {
+    width: 530px;
+    padding: 24px 30px;
+    border: 1px solid var(--dark);
+}
+
+.pay-info {
+    position: relative;
+    width: 100%;
+    margin-bottom: 22px;
+}
+
+.pay-title {
+    font-size: var(--font2);
+    line-height: 37px;
+    font-weight: 500;
+}
+
+.pay-subtitle {
+    padding-bottom: 8px;
+    font-size: var(--font4);
+    line-height: 32px;
+    font-weight: 500;
+    color: var(--dark-red);
+}
+
+.pay-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+}
+
+.pay-sum {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.pay-age-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pay-sum .age-type {
+    display: flex;
+    align-items: center
+}
+
+.pay-sum .age-amount {
+    width: 32px;
+    height: 20px;
+    margin-right: 10px;
+    color: var(--pay-grey);
+    line-height: 20px;
+    text-align: center;
+    border-radius: 5px;
+    background: var(--dark);
+}
+
+.pay-sum .age-name,
+.pay-sum .age-cost {
+    font-size: var(--font4);
+}
+
+.pay-sum-types {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+    padding-bottom: 9px;
+    border-bottom: 3px solid var(--dark-red);
+}
+
+.pay-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font2);
+    font-weight: 500;
+}
+
+.card {
+    position: relative;
+    margin-bottom: 56px;
+}
+
+.card input {
+    padding-left: 10px;
+}
+
+.card-front,
+.card-back {
+    position: relative;
+    width: 360px;
+    height: 211px;
+    padding: 14px 20px;
+    border-radius: 3px;
+}
+
+.card-front {
+    z-index: 1;
+    background-color: #BCBCBC;
+}
+
+.card-back {
+    position: absolute;
+    z-index: 0;
+    top: 30px;
+    right: 0;
+    background-color: #939393;
+}
+
+.card input {
+    height: 35px;
+    font-size: 12px;
+    line-height: 14px;
+    border: 1px solid var(--pay-grey);
+    background-color: var(--light);
+}
+
+.card p {
+    margin-bottom: 5px;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.card-number::-webkit-inner-spin-button {
+    display: none;
+}
+
+.card-number {
+    width: 215px;
+    margin-bottom: 10px;
+}
+
+.card-name {
+    width: 100%;
+}
+
+.logo-visa {
+    position: absolute;
+    top: 34px;
+    right: 22px;
+    width: 55px;
+    height: 16px;
+    background-image: url("../assets/svg/pay/visa.svg");
+}
+
+.logo-mastercard {
+    position: absolute;
+    top: 64px;
+    right: 22px;
+    width: 53px;
+    height: 32px;
+    background-image: url("../assets/svg/pay/mastercard.svg");
+}
+
+.black-line {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background-color: var(--dark);
+}
+
+.cvv {
+    position: absolute;
+    right: 20px;
+    top: 85px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    width: 75px;
+}
+
+.card-cvv {
+    width: 75px;
+    height: 35px;
+}
+
+.cvv p {
+    margin-bottom: 0;
+}
+
+.cvv p:last-child {
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.book-submit {
+    position: relative;
+    float: right;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 45px;
+    font-size: var(--font4);
+    color: var(--light);
+    background-color: var(--dark-red);
+    overflow: hidden;
+    user-select: none;
+    cursor: pointer;
+}
+
+.book-submit:hover {
+    background-color: var(--gold);
+    transition-duration: var(--duration-long);
+}
+
+.book-submit > .circle {
+    position: absolute;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--light);
+    transform: translate(-50%, -50%) scale(0);
+    animation: scale 0.5s ease-out;
+}
+
+.input-error {
+    height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #ff0000;
+    padding-left: 5px;
+}
+
+@keyframes scale {
+    to {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+    }
+}
+
+::-webkit-calendar-picker-indicator {
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    margin-right: 14px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--dark);
+    background-size: 0 0;
+    cursor: pointer;
+}
+
+::-webkit-calendar-picker-indicator:hover {
+    background-color: var(--dark-red);
+    transition-duration: var(--duration-short);
+}
+
+input[type="date"]:after,
+input[type="time"]:after {
+    position: absolute;
+    content: "";
+    top: 20px;
+    right: 17px;
+    width: 10px;
+    height: 5px;
+    clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+    background: var(--light);
+    pointer-events: none;
+}
+
+.date-time {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+
+.date-container,
+.time-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+input[type="date"],
+input[type="time"] {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    padding-left: 43px;
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    border: 1px solid var(--dark);
+    border-radius: 0;
+    cursor: text;
+}
+
+input[type="date"] {
+    background-image: url("../assets/svg/pay/date.svg");
+}
+
+input[type="time"] {
+    background-image: url("../assets/svg/pay/time.svg");
+}
+
+::-webkit-datetime-edit-text,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-year-field {
+    display: none;
+}
+
+.has-value::-webkit-datetime-edit-text,
+.has-value::-webkit-datetime-edit-month-field,
+.has-value::-webkit-datetime-edit-day-field,
+.has-value::-webkit-datetime-edit-year-field {
+    display: inline;
+}
+
+::-webkit-datetime-edit-hour-field,
+::-webkit-datetime-edit-minute-field {
+    display: none;
+}
+
+.has-value::-webkit-datetime-edit-hour-field,
+.has-value::-webkit-datetime-edit-minute-field {
+    display: inline;
+}
+
+input[type="date"]:not(.has-value):before{
+    content: 'Date';
+}
+
+input[type="time"]:not(.has-value):before{
+    content: 'Time';
+}
+
+.book-input {
+    padding-left: 43px;
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+}
+
+.book-input.name {
+    background-image: url("../assets/svg/pay/man.svg");
+}
+
+.book-input.email {
+    background-image: url("../assets/svg/pay/email.svg");
+}
+
+.book-input.tel {
+    background-image: url("../assets/svg/pay/tel.svg");
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    background-size: 15px 32px;
+}
+
+.pay-info-detail {
+    position: relative;
+    margin-bottom: 5px;
+    padding-left: 30px;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.pay-info-detail::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 22px;
+    height: 22px;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.pay-date::before {
+    background-image: url("../assets/svg/pay/date.svg");
+}
+
+.pay-time::before {
+    background-image: url("../assets/svg/pay/time.svg");
+}
+
+.pay-type::before {
+    background-image: url("../assets/svg/pay/check.svg");
+}
+
+/* style arrows */
+
+.card-cvv::-webkit-inner-spin-button {
+    display: none;
+}
+
+.card-date-box input::-webkit-inner-spin-button {
+    display: none;
+}
+
+.card-date {
+    display: flex;
+    justify-content: space-between;
+    width: 215px;
+    margin-bottom: 10px;
+}
+
+.card-date input {
+    width: 72px;
+}
+
+.card-date-box {
+    display: flex;
+}
+
+.card-date-arrows {
+    position: relative;
+    width: 28px;
+    height: 35px;
+    border: 1px solid var(--pay-grey);
+    border-left: 0;
+    background-color: var(--light);
+}
+
+.card-date-arrows span {
+    position: absolute;
+    right: 0;
+    width: 6px;
+    height: 4px;
+    background: var(--pay-grey);
+    cursor: pointer;
+}
+
+.card-date-arrows span:hover {
+    background: var(--dark-red);
+    transition-duration: var(--duration-short);
+}
+
+.card-date-arrows span:nth-of-type(1) {
+    top: 11px;
+    right: 11px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.card-date-arrows span:nth-of-type(2) {
+    bottom: 11px;
+    right: 11px;
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+
+
+
+
+/* style select */
+
+.custom-select {
+    position: relative;
+}
+
+.custom-select select {
+    display: none;
+}
+
+.select-selected {
+    background: 15px 15px no-repeat url("../assets/svg/pay/type.svg");
+    background-position: left 15px center;
+    background-color: var(--light);
+    border: 1px solid var(--dark);
+}
+
+.select-selected:before {
+    position: absolute;
+    content: "";
+    top: 15px;
+    right: 16px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background-color: var(--dark);
+}
+
+.select-selected:hover:before {
+    background-color: var(--dark-red);
+    transition-duration: var(--duration-short);
+}
+
+.select-selected:after {
+    content: "";
+    position: absolute;
+    top: 22px;
+    right: 19px;
+    width: 10px;
+    height: 5px;
+    clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+    background: var(--light);
+}
+
+.select-selected.select-arrow-active:after {
+    top: 20px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    background: var(--light);
+}
+
+.select-items div,.select-selected {
+    padding: 10px 43px 11px;
+    color: var(--dark);
+    cursor: pointer;
+}
+
+.select-items {
+    position: absolute;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--light);
+    border: 1px solid var(--dark);
+    border-top: 0;
+}
+
+.select-items > div:hover {
+    background-color: #E7E7E7;
+    transition-duration: var(--duration-short);
+}
+
+.select-hide {
+    display: none;
+}
+
+.invalid-input {
+    border-color: #ff0000 !important;
+}
+
+@media (max-width: 1600px) { 
+    .buy-container-form {
+        max-width: unset;
+        max-height: unset;
+    }
+}
+
+@media (max-width: 1024px) { 
+    .ticket-type-container {
+        display: none;
+    }
+
+    .tickets-buy-container {
+        flex-basis: 0;
+        padding-right: 30px;
+    }
+
+    .tickets-img {
+        width: 71%;
+        max-width: 700px;
+        height: 440px;
+    }
+
+    .ticket-amount-title {
+        font-size: var(--font2);
+        margin-bottom: 30px;
+        align-self: flex-start;
+    }
+
+    .counter {
+        width: 100%;
+        padding: 6px 14px;
+    }
+
+    .ticket-amount-counter {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .ticket-total {
+        margin-top: -5px;
+        margin-bottom: 70px;
+        font-size: var(--font2);
+    }
+
+    .tickets-age-category {
+        font-size: 22px;
+        margin-bottom: 9px;
+    }
+    
+    .btn-change-amount {
+        font-size: 32px;
+    }
+
+    .ticket-buy-btn {
+        font-size: 22px;
+    }
+
+    .buy-container-form {
+        align-items: flex-start;
+        padding: 75px 0;
+        font-size: var(--font5);
+        font-weight: 400;
+        color: var(--dark);
+        background-color: var(--light);
+        transition: left 1s;
+    }
+
+    input[type="date"], 
+    input[type="time"],
+    .book-input,
+    .book-head p,
+    .book-amount-title,
+    .custom-select,
+    .book-amount-type-container p,
+    .book-btn-change-amount {
+        font-size: 18px;
+    }
+
+    .pay-title,
+    .pay-total {
+        font-size: 32px;
+    }
+
+    .pay-subtitle,
+    .pay-sum .age-name,
+    .pay-sum .age-cost,
+    .book-submit {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 980px) {
+    .buy-container {
+        align-items: flex-start
+    }
+
+    .tickets-img {
+        max-width: 444px;
+        height: 340px;
+    }
+
+    .tickets-buy-container {
+        padding-right: 50px;
+        margin-bottom: 10px;
+    }
+
+    .ticket-amount-title {
+        font-size: 28px;
+        margin-bottom: 39px;
+    }
+
+    .ticket-amount-counter {
+        margin-bottom: 26px;
+    }
+
+    .ticket-total {
+        font-size: 28px;
+        margin-top: 14px;
+        margin-bottom: 39px;
+    }
+
+    .tickets-section {
+        padding: 40px 0 30px;
+    }
+
+    .buy-container-form {
+        width: 590px;
+        height: fit-content;
+        padding: 80px 0 40px;
+    }
+
+    .buy-tickets-form {
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        max-width: 530px;
+        gap: 50px;
+    }
+
+    .buy-tickets-title {
+        margin-bottom: 14px;
+    }
+
+    .book-head {
+        margin-bottom: 40px;
+    }
+
+    .book,
+    .pay {
+        width: 100%;
+    }
+
+    .pay {
+        padding: 24px 14px;
+    }
+
+    .date-time {
+        gap: 28px;
+    }
+
+    .pay-sum {
+        margin-bottom: 15px;
+    }
+
+    .card-back {
+        top: 28px;
+    }
+
+    .card {
+        margin-bottom: 53px;
+    }
+}
+
+@media (max-width: 600px) {
+    .tickets-container {
+        flex-direction: column;
+    }
+
+    .tickets-img {
+        width: 100%;
+        height: 160px;
+        max-width: none;
+        margin-bottom: 40px;
+    }
+
+    .tickets-container {
+        align-items: center;
+    }
+}
+
+@media (max-width: 560px) {
+    .tickets-buy-container {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .ticket-amount-title {
+        width: 100%;
+        margin-bottom: 22px;
+        font-size: 16px;
+        line-height: 18px;
+        text-align: center;
+    }
+
+    .tickets-age-category {
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 15px;
+    }
+
+    .ticket-amount-counter {
+        margin-bottom: 21px;
+    }
+
+    .ticket-total {
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+        font-size: 16px;
+        line-height: 18px;
+        letter-spacing: 0px;
+    }
+
+    .ticket-total span:first-child {
+        margin: 0 3px;
+    }
+
+    .ticket-buy-btn {
+        font-size: 16px;
+    }
+
+    .buy-container-form {
+        width: 100%;
+    }
+
+    .buy-tickets-form {
+        max-width: 360px;
+    }
+
+    .buy-tickets-title {
+        font-size: 32px;
+        line-height: 35px;
+    }
+
+    .date-time {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .date-container,
+    .time-container {
+        width: 100%;
+    }
+
+    .pay-img {
+        width: 37%;
+        max-width: 120px;
+    }
+
+    .card-front,
+    .card-back {
+        width: 100%;
+        height: 209px;
+    }
+
+    .card {
+        margin-bottom: 64px;
+    }
+
+    .card p {
+        font-size: 11px;
+        line-height: 14px;
+    }
+
+    .card-back {
+        position: relative;
+        top: 25px;
+    }
+
+    .card-number {
+        width: 75%;
+        max-width: 215px;
+    }
+
+    .cvv p:last-child {
+        font-size: 9px;
+        line-height: 11px;
+    }
+
+    .cvv p:first-child {
+        font-size: 13px;
+    }
+}
